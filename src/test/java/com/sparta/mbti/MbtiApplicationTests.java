@@ -1,15 +1,13 @@
 package com.sparta.mbti;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
-@EnableJpaAuditing
-@SpringBootApplication
-public class MbtiApplication {
+@SpringBootTest
+class MbtiApplicationTests {
 
-    public static void main(String[] args) {
-        SpringApplication.run(MbtiApplication.class, args);
+    @Test
+    void contextLoads() {
     }
 
 }
