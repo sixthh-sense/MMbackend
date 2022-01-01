@@ -21,6 +21,8 @@ public class ChatRoomService{
     private final RedisTemplate<String, Object> redisTemplate;
     private HashOperations<String, String, ChatRoom> opsHashChatRoom;
 
+    private final ChatRoomRepository chatRoomRepository;
+
     @PostConstruct
     private void init() {
         opsHashChatRoom = redisTemplate.opsForHash();
@@ -41,6 +43,7 @@ public class ChatRoomService{
     public ChatRoom createChatRoom(String name) {
         ChatRoom chatRoom = ChatRoom.create(name);
         opsHashChatRoom.put(CHAT_ROOMS, chatRoom.getRoomId(), chatRoom);
+        chatRoomRepository.save(chatRoom);
         return chatRoom;
     }
 }

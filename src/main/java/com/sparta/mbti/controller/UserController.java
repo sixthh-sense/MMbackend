@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.sparta.mbti.dto.LoginInfo;
 import com.sparta.mbti.dto.PostResponseDto;
 import com.sparta.mbti.dto.UserRequestDto;
+import com.sparta.mbti.dto.UserResponseDto;
 import com.sparta.mbti.security.UserDetailsImpl;
 import com.sparta.mbti.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -25,12 +26,13 @@ public class UserController {
 
     // 카카오 로그인
     @GetMapping("/user/kakao/callback")
-    public LoginInfo kakaoLogin(@RequestParam String code, HttpServletResponse response) throws IOException {
+    public UserResponseDto kakaoLogin(@RequestParam String code, HttpServletResponse response) throws IOException {
         // 카카오 서버로부터 받은 인가 코드, JWT 토큰
-        userService.kakaoLogin(code, response);
-        response.sendRedirect("http://localhost:8080/chat/room");
+        return userService.kakaoLogin(code, response); // UserResponseDto로 하니까 잘 출력이 됨.
+//        response.sendRedirect("http://localhost:8080/chat/room");
 
-        return LoginInfo.builder().name(kakaoLogin(code, response).getName()).token(kakaoLogin(code, response).getToken()).build();
+//        return LoginInfo.builder() -> .sendRedirect한 다음에 response가 바뀌어서 원하는 KakaoLogin response 정보가 안 들어오는 것 아닐까?
+//                .name(kakaoLogin(code, response).getName()).token(kakaoLogin(code, response).getToken()).build();
     }
 
     // 내정보 입력 / 수정
