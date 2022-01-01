@@ -1,6 +1,7 @@
 package com.sparta.mbti.service;
 
 import com.sparta.mbti.model.ChatRoom;
+import com.sparta.mbti.model.User;
 import com.sparta.mbti.repository.ChatRoomRepository;
 import com.sparta.mbti.util.RedisSubscriber;
 import lombok.RequiredArgsConstructor;
@@ -40,8 +41,8 @@ public class ChatRoomService{
     }
 
     // 채팅방 생성 : 서버간 채팅방 공유를 위해 redis hash에 저장한다.
-    public ChatRoom createChatRoom(String name) {
-        ChatRoom chatRoom = ChatRoom.create(name);
+    public ChatRoom createChatRoom(String name, User user) {
+        ChatRoom chatRoom = ChatRoom.create(name, user);
         opsHashChatRoom.put(CHAT_ROOMS, chatRoom.getRoomId(), chatRoom);
         chatRoomRepository.save(chatRoom);
         return chatRoom;
