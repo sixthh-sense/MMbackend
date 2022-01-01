@@ -25,6 +25,10 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'mysql:mysql-connector-java'
     annotationProcessor 'org.projectlombok:lombok'
+
+    // anotationProcessor(application.properties 관련)
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     // JSON In Java
@@ -42,6 +46,9 @@ dependencies {
     implementation 'io.jsonwebtoken:jjwt-impl:0.11.2'
     implementation 'io.jsonwebtoken:jjwt-jackson:0.11.2'
     implementation 'com.auth0:java-jwt:3.13.0'
+
+    // Oauth2 -> 2.4.2 가 사용 횟수가 가장 많은 version이어서 가져옴
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:2.4.2'
 
     // thymeleaf
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
@@ -61,7 +68,10 @@ dependencies {
 
     //redis
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+    //embedded redis
     implementation 'it.ozimov:embedded-redis:0.7.2'
+    implementation 'javax.xml.bind:jaxb-api'
 }
 
 
