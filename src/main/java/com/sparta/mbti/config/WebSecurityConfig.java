@@ -110,7 +110,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // 카카오 로그인 페이지 허용
         skipPathList.add("GET,/user/kakao/callback");
 
-//        skipPathList.add("GET,/webjars/**");
+        skipPathList.add("GET,/webjars/**");
 //        skipPathList.add("GET,/ws-stomp/**");
 //        skipPathList.add("GET,/chat/**");
 //        skipPathList.add("POST,/chat/**");
@@ -143,7 +143,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //        configuration.addAllowedOrigin("http://"); // S3 주소
         configuration.addAllowedMethod("*");
         configuration.addAllowedHeader("*");
-        configuration.addExposedHeader("Authorization");
+        configuration.addExposedHeader("*");
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);

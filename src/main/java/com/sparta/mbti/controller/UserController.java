@@ -28,6 +28,7 @@ public class UserController {
     @GetMapping("/user/kakao/callback")
     public UserResponseDto kakaoLogin(@RequestParam String code, HttpServletResponse response) throws IOException {
         // 카카오 서버로부터 받은 인가 코드, JWT 토큰
+        // String -> response.addHeader(AUTH_HEADER, token) -> AUTH_HEADER는 Authorization // 아니면 token?
         return userService.kakaoLogin(code, response); // UserResponseDto로 하니까 잘 출력이 됨.
 //        response.sendRedirect("http://localhost:8080/chat/room");
 

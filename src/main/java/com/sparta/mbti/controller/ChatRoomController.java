@@ -41,6 +41,8 @@ public class ChatRoomController{
     @ResponseBody
     public ChatRoom createRoom(@RequestParam String name, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         User user = userRepository.findById(userDetails.getUser().getId()).orElseThrow(() -> new IllegalArgumentException("유저가 없습니다"));
+        System.out.println(name);
+        System.out.println(user.getNickname());
         return chatRoomService.createChatRoom(name, user);
     }
     // 채팅방 입장 화면
